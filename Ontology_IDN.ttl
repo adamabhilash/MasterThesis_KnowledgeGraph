@@ -1,80 +1,153 @@
-@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix : <http://example.org/narrative#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix idn: <http://example.org/idn#> .
-@prefix owl: <http://www.w3.org/2002/07/owl#> .
 
-idn:Character rdf:type rdfs:Class .
-idn:Event rdf:type rdfs:Class .
-idn:DecisionPoint rdf:type rdfs:Class .
-idn:Choice rdf:type rdfs:Class .
-idn:Outcome rdf:type rdfs:Class .
-idn:StoryArc rdf:type rdfs:Class .
-idn:CharacterRelationship rdf:type rdfs:Class .
-idn:CharacterPlot rdf:type rdfs:Class .
-idn:Action rdf:type rdfs:Class .
-idn:NarrativeChange rdf:type rdfs:Class .
+### Classes ###
+:Character a rdfs:Class ;
+    rdfs:comment "Represents a character in the narrative." .
 
-idn:hasName rdf:type rdf:Property ;
-    rdfs:domain idn:Character ;
+:Event a rdfs:Class ;
+    rdfs:comment "An event or action that occurs within the narrative." .
+
+:DecisionPoint a rdfs:Class ;
+    rdfs:comment "A point in the narrative where the user or character makes a choice." .
+
+:Choice a rdfs:Class ;
+    rdfs:comment "Represents a choice available at a Decision Point." .
+
+:Outcome a rdfs:Class ;
+    rdfs:comment "The result or consequence of a choice." .
+
+:StoryArc a rdfs:Class ;
+    rdfs:comment "A sequence of events and decisions that form a coherent narrative path." .
+
+:CharacterRelationship a rdfs:Class ;
+    rdfs:comment "Represents a specific relationship between two characters (e.g., friend, enemy, sibling)." .
+
+:CharacterPlot a rdfs:Class ;
+    rdfs:comment "A subplot or narrative arc that primarily involves a specific character." .
+
+:Action a rdfs:Class ;
+    rdfs:comment "An action taken by a character, which may affect the narrative’s progression or the state of other characters." .
+
+:NarrativeChange a rdfs:Class ;
+    rdfs:comment "Represents a change in the narrative, potentially altering the storyline, character development, or setting." .
+
+:Media a rdfs:Class ;
+    rdfs:comment "Represents a media element associated with a narrative entity." .
+
+:Version a rdfs:Class ;
+    rdfs:comment "Tracks changes in the knowledge graph." .
+
+### Properties ###
+:hasName a rdf:Property ;
+    rdfs:domain :Character, :StoryArc ;
     rdfs:range xsd:string .
 
-idn:participatesIn rdf:type rdf:Property ;
-    rdfs:domain idn:Character ;
-    rdfs:range idn:Event .
+:participatesIn a rdf:Property ;
+    rdfs:domain :Character ;
+    rdfs:range :Event .
 
-idn:hasRelationshipWith rdf:type rdf:Property ;
-    rdfs:domain idn:Character ;
-    rdfs:range idn:CharacterRelationship .
+:leadsTo a rdf:Property ;
+    rdfs:domain :Event ;
+    rdfs:range :Event, :DecisionPoint .
 
-idn:relationshipType rdf:type rdf:Property ;
-    rdfs:domain idn:CharacterRelationship ;
+:belongsTo a rdf:Property ;
+    rdfs:domain :DecisionPoint, :Choice ;
+    rdfs:range :StoryArc .
+
+:hasChoice a rdf:Property ;
+    rdfs:domain :DecisionPoint ;
+    rdfs:range :Choice .
+
+:resultsIn a rdf:Property ;
+    rdfs:domain :Choice ;
+    rdfs:range :Outcome .
+
+:hasDescription a rdf:Property ;
+    rdfs:domain :Character, :Event, :DecisionPoint, :Outcome, :StoryArc ;
     rdfs:range xsd:string .
 
-idn:partOfPlot rdf:type rdf:Property ;
-    rdfs:domain [
-        rdf:type owl:Class ;
-        owl:unionOf ( 
-            idn:Event 
-            idn:DecisionPoint 
-            idn:Action 
-        )
-    ] ;
-    rdfs:range idn:CharacterPlot .
+:hasRelationshipWith a rdf:Property ;
+    rdfs:domain :Character ;
+    rdfs:range :CharacterRelationship ;
+    rdfs:comment "Defines a relationship between two characters." .
 
-idn:performsAction rdf:type rdf:Property ;
-    rdfs:domain idn:Character ;
-    rdfs:range idn:Action .
+:relationshipType a rdf:Property ;
+    rdfs:domain :CharacterRelationship ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Describes the type of relationship (e.g., 'friendship', 'rivalry')." .
 
-idn:leadsToNarrativeChange rdf:type rdf:Property ;
-    rdfs:domain [
-        rdf:type owl:Class ;
-        owl:unionOf ( 
-            idn:Action 
-            idn:Choice 
-        )
-    ] ;
-    rdfs:range idn:NarrativeChange .
+:partOfPlot a rdf:Property ;
+    rdfs:domain :Event, :DecisionPoint, :Action ;
+    rdfs:range :CharacterPlot ;
+    rdfs:comment "Associates narrative elements with a character’s individual plot." .
 
-idn:resultsIn rdf:type rdf:Property ;
-    rdfs:domain [
-        rdf:type owl:Class ;
-        owl:unionOf (
-            idn:Choice 
-            idn:Action
-        )
-    ] ;
-    rdfs:range idn:Outcome .
+:performsAction a rdf:Property ;
+    rdfs:domain :Character ;
+    rdfs:range :Action ;
+    rdfs:comment "Links a character to an action they perform." .
 
-idn:partOfStoryArc rdf:type rdf:Property ;
-    rdfs:domain [
-        rdf:type owl:Class ;
-        owl:unionOf (
-            idn:Event 
-            idn:DecisionPoint 
-            idn:Outcome 
-            idn:Action 
-            idn:NarrativeChange
-        )
-    ] ;
-    rdfs:range idn:StoryArc .
+:actionDescription a rdf:Property ;
+    rdfs:domain :Action ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Describes the action performed by the character." .
+
+:affectsCharacter a rdf:Property ;
+    rdfs:domain :Action ;
+    rdfs:range :Character ;
+    rdfs:comment "Indicates which character(s) are affected by an action." .
+
+:leadsToNarrativeChange a rdf:Property ;
+    rdfs:domain :Action, :Choice ;
+    rdfs:range :NarrativeChange ;
+    rdfs:comment "Indicates that an action or choice leads to a significant change in the narrative." .
+
+:changeDescription a rdf:Property ;
+    rdfs:domain :NarrativeChange ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Describes the nature of the narrative change." .
+
+:mediaType a rdf:Property ;
+    rdfs:domain :Media ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Type of media (e.g., image, video, audio)." .
+
+:mediaURL a rdf:Property ;
+    rdfs:domain :Media ;
+    rdfs:range xsd:string ;
+    rdfs:comment "URL of the media file." .
+
+:version_number a rdf:Property ;
+    rdfs:domain :Version ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Version number of the knowledge graph." .
+
+:timestamp a rdf:Property ;
+    rdfs:domain :Version ;
+    rdfs:range xsd:dateTime ;
+    rdfs:comment "Timestamp of the version." .
+
+:description a rdf:Property ;
+    rdfs:domain :Version ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Description of the version." .
+
+:created_at a rdf:Property ;
+    rdfs:domain :Character, :Event, :DecisionPoint, :Choice, :Outcome, :StoryArc, :CharacterRelationship, :CharacterPlot, :Action, :NarrativeChange, :Media ;
+    rdfs:range xsd:dateTime ;
+    rdfs:comment "Creation timestamp." .
+
+:updated_at a rdf:Property ;
+    rdfs:domain :Character, :Event, :DecisionPoint, :Choice, :Outcome, :StoryArc, :CharacterRelationship, :CharacterPlot, :Action, :NarrativeChange, :Media ;
+    rdfs:range xsd:dateTime ;
+    rdfs:comment "Last update timestamp." .
+
+:deleted_at a rdf:Property ;
+    rdfs:domain :Character, :Event, :DecisionPoint, :Choice, :Outcome, :StoryArc, :CharacterRelationship, :CharacterPlot, :Action, :NarrativeChange, :Media ;
+    rdfs:range xsd:dateTime ;
+    rdfs:comment "Deletion timestamp." .
+
+:is_active a rdf:Property ;
+    rdfs:domain :Character, :Event, :DecisionPoint, :Choice, :Outcome, :StoryArc, :CharacterRelationship, :CharacterPlot, :Action, :NarrativeChange, :Media ;
+    rdfs:range xsd:boolean ;
+    rdfs:comment "Indicates if the entity is active." .
