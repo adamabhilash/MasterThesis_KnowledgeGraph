@@ -22,7 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-45ye$287k%5gjw^rhzq23vo8mo0pgtxkw^juamc#sdq-k7oyex'
+SECRET_KEY = $DJANGO_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -130,7 +130,7 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Neo4j connection settings
-config.DATABASE_URL = 'bolt://neo4j:MasterThesis#2024@52.169.110.242:7687'  # Adjust as necessary
+config.DATABASE_URL = 'bolt://neo4j:$PASSWORD_NEO4J@52.169.110.242:7687'  # Adjust as necessary
 
 #Fuseki URL
 FUSEKI_URL = 'http://localhost:3030/MasterThesis'  # Change the URL and dataset name accordingly
