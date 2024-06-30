@@ -9,7 +9,7 @@ This repository contains the code for the Master Thesis Knowledge Graph project.
 - [Installation](#installation)
 - [Usage](#usage)
 - [Contributing](#contributing)
-- [Fuseki Server] (#fuseki-service)
+- [Fuseki Service] (#fuseki-service)
 
 ## About
 
