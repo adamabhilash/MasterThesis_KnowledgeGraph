@@ -4,7 +4,7 @@ This repository contains the code for the Master Thesis Knowledge Graph project.
 
 ## Description
 
-The Master Thesis Knowledge Graph project aims to build a knowledge graph using Django framework. The knowledge graph will be used to represent and organize information related to the master thesis.
+The Master Thesis Knowledge Graph to support IDN Authoring project aims to build a knowledge graph using Django framework. The knowledge graph will be used to represent and organize information related to the IDN authoring process.
 
 ## Projects
 
