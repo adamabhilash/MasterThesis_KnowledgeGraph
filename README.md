@@ -69,3 +69,28 @@ Contributions are welcome! If you would like to contribute to this project, plea
     ```
 
 5. Open a pull request on the original repository.
+
+## Fuseki Service
+The `fuseki_service` project is a component of the Master Thesis Knowledge Graph project. It is responsible for hosting and managing the Fuseki server, which is used to store and query the knowledge graph data.
+
+### Installation
+To install and configure the Fuseki service, follow these steps:
+
+1. Download the Apache Jena Fuseki distribution from the official website.
+2. Extract the downloaded archive to a desired location on your system.
+3. Start the Fuseki server by running the following command:
+
+    ```bash
+    ./fuseki-server --update --mem /dataset
+    ```
+
+    This command starts the Fuseki server with an in-memory dataset named `/dataset`. You can modify the dataset name and storage type according to your requirements.
+
+### Usage
+Once the Fuseki server is running, you can interact with it using the Fuseki web interface or by making SPARQL queries programmatically.
+
+To access the Fuseki web interface, open your web browser and navigate to `http://localhost:3030`. From there, you can manage datasets, upload RDF data, and execute SPARQL queries.
+
+To make SPARQL queries programmatically, you can use the Apache Jena API or any other SPARQL client library of your choice. Here's an example of executing a SPARQL query using the Apache Jena API:
+
+
