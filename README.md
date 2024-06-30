@@ -6,6 +6,7 @@ This repository contains the code for the Master Thesis Knowledge Graph project.
 
 - [About](#about)
 - [Features](#features)
+- [Projects](#projects)
 - [Installation](#installation)
 - [Usage](#usage)
 - [Contributing](#contributing)
@@ -24,6 +25,15 @@ The Master Thesis Knowledge Graph to support IDN Authoring project aims to build
 - Creation of API for CRUD for Neo4j and Apache Jena Fuseki
 - Creation of composite service to interact with API's
 
+## Projects
+
+### Graphs
+
+### MT_KnowledgeGraph
+
+### Service_Neo4j
+
+### fuseki_service
 
 ## Installation
 
