@@ -28,12 +28,20 @@ The Master Thesis Knowledge Graph to support IDN Authoring project aims to build
 ## Projects
 
 ### Graphs
+Python notebook to create visualization for performance tests conducted on Neo4j and Apache Jena.
 
 ### MT_KnowledgeGraph
+Settings for both Neo4j and Apache Jena projects.
 
 ### Service_Neo4j
+- API for Neo4j system
+- CRUD Services for all the nodes and entities as defined in Ontology_IDN.ttl.
+- CompositeService for creation/update of multiple nodes and entities.
 
 ### fuseki_service
+- API for Apache Jena system
+- CRUD Services for all the nodes and entities as defined in Ontology_IDN.ttl.
+- CompositeService for creation/update of multiple nodes and entities.
 
 ## Installation
 
