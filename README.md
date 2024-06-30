@@ -2,16 +2,21 @@
 
 This repository contains the code for the Master Thesis Knowledge Graph project.
 
-## Description
+## Table of Contents
+
+- [About](#about)
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [Fuseki Server] (#fusekiservice)
+
+## About
 
 The Master Thesis Knowledge Graph to support IDN Authoring project aims to build a knowledge graph using Django framework. The knowledge graph will be used to represent and organize information related to the IDN authoring process.
 
-## Projects
 
-#### Graphs
-Python notebook which used matplot to create graphs based on the performance tests conducted on services
-
-#### MT_KnowledgeGraph
+## Features
 
 
 ## Installation
