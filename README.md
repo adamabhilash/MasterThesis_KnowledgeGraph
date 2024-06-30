@@ -18,6 +18,12 @@ The Master Thesis Knowledge Graph to support IDN Authoring project aims to build
 
 ## Features
 
+- Construction of knowledge graphs for Neo4j and Apache Jena Fuseki
+- Analysis and visualization of knowledge graphs
+- Implementation of algorithms for knowledge graph enrichment
+- Creation of API for CRUD for Neo4j and Apache Jena Fuseki
+- Creation of composite service to interact with API's
+
 
 ## Installation
 
